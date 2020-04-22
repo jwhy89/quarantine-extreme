@@ -1,5 +1,4 @@
 const express = require('express');
-var cors = require('cors');
 const bodyParser = require('body-parser');
 const pg = require('pg');
 
