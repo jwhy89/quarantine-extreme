@@ -1,4 +1,5 @@
 const express = require('express');
+var cors = require('cors');
 const bodyParser = require('body-parser');
 const pg = require('pg');
 
@@ -12,6 +13,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
  // needed for react requests
 app.use(express.static('build'));
+
+// Then use it before your routes are set up:
+app.use(cors());
 
 /** ---------- ROUTES ---------- **/
 app.use('/video', video)
