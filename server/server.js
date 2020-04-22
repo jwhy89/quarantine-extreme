@@ -1,15 +1,24 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const pg = require('pg');
+const cors = require('cors');
 
 const port = process.env.PORT || 5000;
 
 const app = express();
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  next();
-});
+const corsOptions = {
+  origin: '*',
+  optionsSuccessStatus: 200,
+};
+
+// app.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   next();
+// });
+
+app.options('*', cors(corsOptions));
+app.use(cors(corsOptions));
 
 const video = require('./routes/videos.router');
 
